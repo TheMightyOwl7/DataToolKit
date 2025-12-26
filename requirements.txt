@@ -1,0 +1,7 @@
+# Data Processing Toolkit Dependencies
+# =====================================
+# Python 3.10+ required
+# Tkinter is included with Python (no pip install needed)
+
+# Data Processing Engine
+duckdb>=0.9.0
