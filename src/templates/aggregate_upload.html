@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 mt-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3>Data Aggregator - Upload</h3>
+            </div>
+            <div class="card-body">
+                <p>Upload multiple CSV files to combine them and generate summary reports.</p>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label for="input_files" class="form-label">Select CSV Files</label>
+                        <input class="form-control" type="file" id="input_files" name="input_files" required
+                            accept=".csv" multiple>
+                        <div class="form-text">Hold Ctrl/Cmd to select multiple files.</div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">Upload and Configure</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

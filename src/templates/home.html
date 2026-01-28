@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center mt-5">
+        <h1>Welcome to Data ToolKit</h1>
+        <p class="lead">A suite of data processing tools for your web browser.</p>
+
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Reconciliation</h5>
+                        <p class="card-text">Compare two datasets to find matches, variances, and missing records.</p>
+                        <a href="/reconcile" class="btn btn-primary">Launch Tool</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Cleaner</h5>
+                        <p class="card-text">Normalize dates, numbers, and clean messy CSV data.</p>
+                        <a href="/clean" class="btn btn-success">Launch Tool</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Aggregator</h5>
+                        <p class="card-text">Combine multiple files and generate grouped summary reports.</p>
+                        <a href="/aggregate" class="btn btn-warning">Launch Tool</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Analyzer</h5>
+                        <p class="card-text">Filter data and view real-time column statistics.</p>
+                        <a href="/analyze" class="btn btn-info">Launch Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Aggregation Settings</h2>
+
+    <div class="alert alert-info">
+        Files loaded: {{ file_count }} | Total Rows: {{ "{:,}".format(total_rows) }}
+    </div>
+
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">Required Settings</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Primary Group By</label>
+                            <select class="form-select" name="primary_group" required>
+                                {% for col in columns %}
+                                <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="form-text">The main category to group results by.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Sum Column</label>
+                            <select class="form-select" name="sum_col" required>
+                                {% for col in columns %}
+                                <option value="{{ col }}" {% if 'amount' in col.lower() %}selected{% endif %}>{{ col }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <div class="form-text">The numeric column to total up.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">Options</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Sort By</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sort_by" value="total" checked>
+                                <label class="form-check-label">Total Amount (Highest First)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sort_by" value="count">
+                                <label class="form-check-label">Record Count (Highest First)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sort_by" value="group">
+                                <label class="form-check-label">Group Name (A-Z)</label>
+                            </div>
+                        </div>
+
+                        <label class="form-label">Additional Grouping</label>
+                        <div
+                            style="max-height: 150px; overflow-y: auto; border: 1px solid #dee2e6; padding: 10px; border-radius: 4px;">
+                            {% for col in columns %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="group_{{ col }}" value="1">
+                                <label class="form-check-label">{{ col }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-5">
+            <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Back</button>
+            <button type="submit" class="btn btn-success btn-lg">Aggregate Data</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
